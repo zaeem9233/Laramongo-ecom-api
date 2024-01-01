@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\CategorySub;
+use App\Models\CategorySubSub;
 use App\Models\Colour;
 use App\Models\Coupen;
 use App\Models\Product;
@@ -56,5 +57,7 @@ class DatabaseSeeder extends Seeder
         ]); 
 
         CategorySub::factory(50)->create();
+
+        CategorySubSub::factory(200)->create();
     }
 }

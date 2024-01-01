@@ -12,7 +12,7 @@ class CategorySubController extends Controller
 {
     public function index()
     {
-        $cats_sub = CategorySub::paginate();
+        $cats_sub = CategorySub::with('category')->paginate();
 
         return CategorySubResource::collection(
             $cats_sub
@@ -28,6 +28,7 @@ class CategorySubController extends Controller
         ]);
 
         $cat_sub = CategorySub::create($data);
+        $cat_sub->load('category');
 
         return new CategorySubResource(
             $cat_sub
@@ -37,7 +38,7 @@ class CategorySubController extends Controller
 
     public function show(String $id)
     {
-        $cat_sub = CategorySub::where('_id', $id)->get();
+        $cat_sub = CategorySub::where('_id', $id)->with('category')->get();
         return new CategorySubResource(
             $cat_sub
         );  
@@ -47,12 +48,12 @@ class CategorySubController extends Controller
     {
         $data = $request->validate([
             'name' => 'sometimes|required|string|min:2|max:100',
-            'category_id' => 'sometimes|required|exists:category,_id',
+            'category_id' => 'sometimes|required|exists:categories,_id',
             'is_active' => 'boolean',
         ]);
 
         $cat_sub = CategorySub::where('_id', $id)->update($data);
-        $cat_sub = CategorySub::where('_id', $id)->get();
+        $cat_sub = CategorySub::where('_id', $id)->with('category')->get();
 
         return new CategorySubResource(
             $cat_sub

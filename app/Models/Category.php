@@ -21,4 +21,8 @@ class Category extends Model
     public function product(){
         return $this->hasMany(\App\Models\Product::class);
     }
+
+    public function categorysub(){
+        return $this->hasMany(\App\Models\CategorySub::class);
+    }
 }
