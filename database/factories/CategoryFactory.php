@@ -16,10 +16,10 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $cats = ['Men', 'Women', 'Kid', 'Home', 'Electronics', 'TV & Home', 'Sports', 'Automotive', 'Health', 'Laptops', 'Mobiles', 'Bikes', 'Jewellery'];
+        // $cats = ['Men', 'Women', 'Kid', 'Home', 'Electronics', 'TV & Home', 'Sports', 'Automotive', 'Health', 'Laptops', 'Mobiles', 'Bikes', 'Jewellery'];
 
         return [
-            'name' => fake()->name(),
+            'name' => fake()->word(),
             'des' => fake()->paragraph(),
             'meta_title' => fake()->name(),
             'meta_keyword' => fake()->sentence(),

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\CategorySub;
 use App\Models\Colour;
 use App\Models\Coupen;
 use App\Models\Product;
@@ -53,5 +54,7 @@ class DatabaseSeeder extends Seeder
             'is_percent' => false,
             'discount' => '10'
         ]); 
+
+        CategorySub::factory(50)->create();
     }
 }
