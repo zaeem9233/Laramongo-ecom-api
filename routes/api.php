@@ -7,6 +7,9 @@ use App\Http\Controllers\Api\CategorySubSubController;
 use App\Http\Controllers\Api\ColourController;
 use App\Http\Controllers\Api\CoupenController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\WishlistController;
+use App\Http\Controllers\Api\CartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +35,12 @@ Route::resource('sub_sub_category', CategorySubSubController::class)->only(['ind
 Route::resource('colour', ColourController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
 Route::resource('coupen', CoupenController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
 Route::resource('product', ProductController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+
+Route::get('cart/{userId}', [CartController::class, 'index'])->name('cart.index');
+Route::resource('cart', CartController::class)->only(['store', 'update', 'destroy']);
+
+Route::get('wishlist/{userId}', [WishlistController::class, 'index'])->name('wishlist.index');
+Route::resource('wishlist', WishlistController::class)->only(['store', 'destroy']);
+
+Route::get('review/{userId}', [ReviewController::class, 'index'])->name('review.index');
+Route::resource('review', ReviewController::class)->only(['store', 'update', 'destroy']);
