@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('price');
             $table->text('des')->nullable();
             $table->foreignIdFor(\App\Models\Category::class, 'category_id');
+            $table->foreignIdFor(\App\Models\CategorySub::class, 'category_sub_id')->nullable();
+            $table->foreignIdFor(\App\Models\CategorySubSub::class, 'category_sub_sub_id')->nullable();
             $table->foreignIdFor(\App\Models\Brand::class, 'brand_id');
             $table->foreignIdFor(\App\Models\User::class, 'user_id');
             $table->timestamps();

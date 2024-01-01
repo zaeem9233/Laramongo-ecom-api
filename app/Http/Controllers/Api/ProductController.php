@@ -52,6 +52,8 @@ class ProductController extends Controller
             'price' => 'sometimes|required|numeric|min:0.01|max:10000000',
             'des' => 'sometimes|required|min:10|max:10000',
             'category_id' => 'sometimes|exists:categories,_id',
+            'category_sub_id' => 'sometimes|exists:category_subs,_id',
+            'category_sub_sub_id' => 'sometimes|exists:category_sub_subs,_id',
             'brand_id' => 'sometimes|exists:brands,_id',
         ]);
 

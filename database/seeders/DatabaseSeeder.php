@@ -5,13 +5,16 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Brand;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\CategorySub;
 use App\Models\CategorySubSub;
 use App\Models\Colour;
 use App\Models\Coupen;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\User;
+use App\Models\Wishlist;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -59,5 +62,11 @@ class DatabaseSeeder extends Seeder
         CategorySub::factory(50)->create();
 
         CategorySubSub::factory(200)->create();
+
+        Wishlist::factory(100)->create();
+
+        Cart::factory(100)->create();
+
+        Review::factory(100)->create();
     }
 }
