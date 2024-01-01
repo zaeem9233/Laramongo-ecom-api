@@ -9,4 +9,13 @@ use MongoDB\Laravel\Eloquent\Model;
 class Brand extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'category_id',
+    ];
+
+    public function product(){
+        return $this->hasMany(\App\Models\Product::class);
+    }
 }

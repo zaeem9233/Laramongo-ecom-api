@@ -17,4 +17,8 @@ class Category extends Model
         'meta_keyword',
         'meta_des',
     ];
+
+    public function product(){
+        return $this->hasMany(\App\Models\Product::class);
+    }
 }
