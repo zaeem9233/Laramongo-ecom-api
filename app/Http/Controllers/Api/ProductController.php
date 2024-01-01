@@ -29,7 +29,7 @@ class ProductController extends Controller
             'brand_id' => 'exists:brands,_id',
         ]);
 
-        $res = Product::create($product);
+        $product = Product::create($product);
 
         return new ProductResource(
             $product
