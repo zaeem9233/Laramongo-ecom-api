@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Colour;
+use App\Models\Coupen;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -42,5 +43,15 @@ class DatabaseSeeder extends Seeder
         Product::factory(100)->create();
 
         Colour::factory(10)->create();
+
+        Coupen::factory()->create([
+            'name' => 'Discount 25% Off',
+            'discount' => '25'
+        ]); 
+        Coupen::factory()->create([
+            'name' => 'Discount $10 Off',
+            'is_percent' => false,
+            'discount' => '10'
+        ]); 
     }
 }
