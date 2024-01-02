@@ -15,4 +15,12 @@ class Cart extends Model
         'product_id',
         'quantity',
     ];
+
+    public function product(){
+        return $this->belongsTo(\App\Models\Product::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(\App\Models\User::class);
+    }
 }

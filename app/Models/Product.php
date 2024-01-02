@@ -34,4 +34,8 @@ class Product extends Model
     public function user(){
         return $this->belongsTo(\App\Models\User::class);
     }
+
+    public function cart(){
+        return $this->hasMany(\App\Models\Cart::class);
+    }
 }

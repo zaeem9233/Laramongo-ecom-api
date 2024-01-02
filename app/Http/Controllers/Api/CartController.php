@@ -13,7 +13,7 @@ class CartController extends Controller
 
     public function index(String $userId)
     {
-        $cart = Cart::where('user_id', $userId)->paginate();
+        $cart = Cart::where('user_id', $userId)->with('product')->paginate();
 
         return CartResource::collection(
             $cart
@@ -29,6 +29,7 @@ class CartController extends Controller
         ]);
 
         $cart = Cart::create($data);
+        $cart->load('product');
 
         return new CartResource(
             $cart
@@ -44,7 +45,7 @@ class CartController extends Controller
         ]);
 
         $cart = Cart::where('_id', $id)->update($data);
-        $cart = Cart::where('_id', $id)->get();
+        $cart = Cart::where('_id', $id)->with('product')->get();
 
         return new CartResource(
             $cart
