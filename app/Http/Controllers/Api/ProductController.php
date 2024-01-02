@@ -26,6 +26,8 @@ class ProductController extends Controller
             'des' => 'required|min:10|max:10000',
             'user_id' => 'required|exists:users,_id',
             'category_id' => 'exists:categories,_id',
+            'category_sub_id' => 'exists:category_subs,_id',
+            'category_sub_sub_id' => 'exists:category_sub_subs,_id',
             'brand_id' => 'exists:brands,_id',
         ]);
 
