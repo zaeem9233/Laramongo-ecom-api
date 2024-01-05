@@ -10,10 +10,9 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-
-    public function index(String $userId)
+    public function view(User $user)
     {
-        $cart = Cart::where('user_id', $userId)->with('product')->paginate();
+        $cart = Cart::where('user_id', $user->_id)->with('product')->paginate();
 
         return CartResource::collection(
             $cart

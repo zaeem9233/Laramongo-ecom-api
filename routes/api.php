@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CategorySubController;
@@ -28,6 +29,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('auth/login', [AuthController::class, 'login'])->name('api.login');
+
 Route::resource('brand', BrandController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
 Route::resource('category', CategoryController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
 Route::resource('sub_category', CategorySubController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
@@ -36,7 +39,7 @@ Route::resource('colour', ColourController::class)->only(['index', 'store', 'sho
 Route::resource('coupen', CoupenController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
 Route::resource('product', ProductController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
 
-Route::get('cart/{userId}', [CartController::class, 'index'])->name('cart.index');
+Route::get('cart/{user}', [CartController::class, 'view'])->name('cart.view');
 Route::resource('cart', CartController::class)->only(['store', 'update', 'destroy']);
 
 Route::get('wishlist/{userId}', [WishlistController::class, 'index'])->name('wishlist.index');
